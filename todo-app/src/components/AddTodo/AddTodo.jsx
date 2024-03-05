@@ -1,6 +1,8 @@
 import './AddTodo.css';
 
-function AddTodo() {
+function AddTodo(props) {
+    const { updateTodos } = props;
+
     let todo = {
         task: '',
         done: false
@@ -15,9 +17,9 @@ function AddTodo() {
         todo.done = event.target.checked;
     }
 
-    // function addTodo() {
-    //     alert('Du lägger till: ' + task);
-    // }
+    function addTodo() {
+        updateTodos(todo);
+    }
 
     
     return (
@@ -27,7 +29,7 @@ function AddTodo() {
                 <label htmlFor="done">Status:</label>
                 <input type="checkbox" id="done" onChange={ handleCheckbox } />
             </section>
-            <button className='add-todo__button' onClick={ () => { console.log(todo); } }>Lägg till todo</button>
+            <button className='add-todo__button' onClick={ addTodo }>Lägg till todo</button>
         </section>
     )
 }
